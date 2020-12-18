@@ -6,8 +6,8 @@ $method = strtolower($_SERVER['REQUEST_METHOD']);
 
 if ($method === 'post') {
 
-  $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
-  $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
+  $title = filter_input(INPUT_POST, 'title', FILTER_SANITIZE_SPECIAL_CHARS);
+  $body = filter_input(INPUT_POST, 'body', FILTER_SANITIZE_SPECIAL_CHARS);
 
   if ($title && $body) {
     $sql = $pdo->prepare("INSERT INTO notes (title, body) VALUE (:title, :body)");
